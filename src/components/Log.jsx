@@ -1,6 +1,12 @@
-export default function Log() {
+export default function Log({turns}) {
     
-    return <ol id="log">
-
-    </ol>
+    return (
+        <ol id="log">{
+            turns.map((item) => {
+                return <li key={`${item.player}-${item.square.row}-${item.square.col}`}>
+                    {item.player} selected [{item.square.row},{item.square.col}]
+                </li>
+            })
+        }</ol>
+    );
 }

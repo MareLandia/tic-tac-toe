@@ -26,6 +26,7 @@ function App() {
         ...prevTurns 
       ];
 
+      console.log('------ ',JSON.stringify(updatedTurns));
       return updatedTurns;
     });
   }
@@ -40,7 +41,7 @@ function App() {
 
         <GameBoard onSelectSquare={handleSelectSquare} turns={gameTurns}></GameBoard>
       </div>
-      <Log></Log>
+      <Log turns={gameTurns}/>
     </main>
   )
 }
