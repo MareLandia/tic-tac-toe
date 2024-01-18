@@ -22,6 +22,10 @@ function deriveActivePlayer(gameTurns) {
 }
 
 function App() {
+  const [players, setPlayers]= useState({
+    'X': 'Player 1',
+    'O': 'Player 2'
+  });
   const [gameTurns, setGameTurns] = useState([]);
 
   const activePlayer = deriveActivePlayer(gameTurns);
@@ -32,13 +36,22 @@ function App() {
       gameBoard[row][col] = player;
   }
 
-  printBoard(gameBoard);
-  function printBoard(b){
-      console.log(' ------------------------------ ');
-      console.log(JSON.stringify(b[0]));
-      console.log(JSON.stringify(b[1]));
-      console.log(JSON.stringify(b[2]));
+  function handlePlayerNameChange(symbol, newName) {
+    setPlayers((prevPlayers) => { 
+      return{ 
+        ...prevPlayers,
+        [symbol]: newName 
+      }
+    });
   }
+
+  // printBoard(gameBoard);
+  // function printBoard(b){
+  //     console.log(' ------------------------------ ');
+  //     console.log(JSON.stringify(b[0]));
+  //     console.log(JSON.stringify(b[1]));
+  //     console.log(JSON.stringify(b[2]));
+  // }
   let winner;
 
   for (const comb of WINNING_COMBINATIONS) {
@@ -80,10 +93,10 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName="Player1" symbol="X" isActive={activePlayer === 'X'}></Player>
-          <Player initialName="Player2" symbol="O" isActive={activePlayer === 'O'}></Player>
+          <Player initialName="Player1" symbol="X" isActive={activePlayer === 'X'} onNameChange={handlePlayerNameChange}></Player>
+          <Player initialName="Player2" symbol="O" isActive={activePlayer === 'O'} onNameChange={handlePlayerNameChange}></Player>
         </ol>
-        {(winner || hasDraw) && <GameOver winner={winner} onRestart={handleRestart}></GameOver>}
+        {(winner || hasDraw) && <GameOver winner={players[winner]} onRestart={handleRestart}></GameOver>}
         <GameBoard onSelectSquare={handleSelectSquare} board={gameBoard}></GameBoard>
       </div>
       <Log turns={gameTurns}/>
