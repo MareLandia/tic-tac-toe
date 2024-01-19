@@ -18,11 +18,20 @@ export default function Player({initialName, symbol, isActive, onNameChange}) {
         playerName = <input type="text" required value={name} onChange={handleChange}/>
     }
 
+    let symbolClasses = "";
+    if (isActive) 
+      symbolClasses+= 'active ';
+    if(symbol === 'X') {
+      symbolClasses += "player-1";
+    } else {
+      symbolClasses += "player-2";
+    }
+
     return (
-        <li className={isActive ? 'active' : undefined}>
+        <li className={symbolClasses}>
           <span className="player">
+            <span className="player-symbol fredoka-typo">{symbol}</span>
             {playerName}
-            <span className="player-symbol">{symbol}</span>
           </span>
         <button onClick={handleEditClick}>{isEditing ? "Save" : "Edit"}</button>
         </li>

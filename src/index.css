@@ -1,4 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Caprasimo&family=Roboto+Slab:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=M+PLUS+Rounded+1c&display=swap');
+
+.m-plus {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.fredoka-typo {
+  font-family: "Fredoka", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+:root {
+  --yellow: #FFF275;
+  --grey: #000000b8;
+  --orange: #FF8C42;
+  --blue-grey: #6699CC;
+  --dark-slate-gray: #315659;
+}
 
 * {
   box-sizing: border-box;
@@ -18,15 +43,10 @@ html {
 }
 
 body {
-  background: radial-gradient(
-      circle at top,
-      rgba(241, 210, 70, 0.98),
-      rgba(250, 176, 103, 0.87)
-    ),
-    url('bg-pattern-dark.png');
+  background: radial-gradient( circle at top, var(--yellow), var(--grey)), url(bg-pattern-dark.png);
   background-repeat: repeat;
-  background-size: 100% 100%, 30% 30%, 100% 100%;
-  min-height: 110rem;
+  background-size: 100% 100%, 20% 20%, 100% 100%;
+  min-height: 100rem;
 }
 
 header {
@@ -72,28 +92,37 @@ h1 {
   align-items: center;
   width: 50%;
   border: 2px solid transparent;
+  height: 80px;
 }
 
 #players.highlight-player li.active {
-  border-color: #f6e35a;
+  border-color: white;
   animation: pulse 2s infinite ease-in-out;
+  border-radius: 1rem;
+  background: black;
 }
 
 #players.highlight-player li.active .player-name,
 #players.highlight-player li.active .player-symbol {
-  color: #f6e35a;
+  color: inherit;
+  text-shadow: 2px 2px 3px var(--grey);
 }
 
 #players button {
-  width: 3rem;
+  width: 4rem;
   border: none;
-  background: none;
-  color: #c3ba78;
+  background: var(--grey);
+  color: white;
+  border: 2px solid white;
   font-size: 0.9rem;
   cursor: pointer;
   transition: color 0.2s;
-  padding: 0.5rem 0.25rem 0.25rem 0.25rem;
+  padding: 0.5rem;
   text-align: center;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: auto;
 }
 
 #players button:hover {
@@ -110,7 +139,6 @@ h1 {
 .player-name {
   display: inline-block;
   width: 10rem;
-  font-size: 1rem;
   color: #e1dec7;
   text-transform: uppercase;
   margin: 0;
@@ -118,10 +146,11 @@ h1 {
   border-radius: 4px;
   text-overflow: ellipsis;
   text-align: center;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 1.5rem;
 }
 
 .player input {
-  font: inherit;
   font-size: 1rem;
   width: 10rem;
   border: none;
@@ -129,13 +158,13 @@ h1 {
   animation: pulse-text 2s infinite;
   background-color: #46432f;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: uppercase; 
+  vertical-align: super;
 }
 
 .player-symbol {
-  margin-left: 1rem;
-  font-size: 1rem;
-  color: #e1dec7;
+  margin: 0.5rem;
+  font-size: 2rem;
 }
 
 ol {
@@ -179,15 +208,24 @@ ol {
 }
 
 #game-board button {
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   border: none;
-  background: #aca788;
-  color: #3f3b00;
-  font-size: 5rem;
+  text-shadow: 2px -2px 2px #3f3b00;
+  font-size: 7.8rem;
   cursor: pointer;
-  font-family: 'Caprasimo', cursive;
-  padding: 1rem;
+  font-family: "Fredoka", sans-serif;
+  font-weight: 800;
+  inline-size: 9rem;
+  writing-mode: vertical-rl;
+  border-radius: 1rem;
+  background: whitesmoke;
+}
+.player-1 {
+  color: var(--orange);
+}
+.player-2 {
+  color: var(--blue-grey);
 }
 
 #game-over {
@@ -244,14 +282,17 @@ ol {
   color: #3f3b00;
   list-style: none;
   margin: 2rem auto;
-  padding: 0;
+  padding: 2rem;
   text-align: center;
+  background: white;
+  border-radius: 1rem;
 }
 
 #log li {
   border-radius: 4px;
   animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   margin: 0.75rem;
+  font-family: "Fredoka", sans-serif;
 }
 
 #log li.highlighted {
